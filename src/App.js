@@ -56,40 +56,53 @@ export default class App extends Component {
     render() {
         return (
             <div className="App">
-                <h2>Lottery Contract 🤑</h2>
+                <div className="div-1">
+                    <h2>Lottery Contract 🤑</h2>
 
-                <p>
-                    This contract is managed by {this.state.manager}. There are
-                    currently {this.state.players.length} people entered.
-                    Competing to win{" "}
-                    {web3.utils.fromWei(this.state.balance, "ether")} ether!
-                </p>
+                    <p>
+                        This contract is managed by <b>{this.state.manager}</b>
+                        .<br /> There are currently {
+                            this.state.players.length
+                        }{" "}
+                        people entered.
+                        <br /> Competing to win{" "}
+                        <b>
+                            {web3.utils.fromWei(this.state.balance, "ether")}{" "}
+                            ether
+                        </b>
+                        !
+                    </p>
+                </div>
 
                 <hr />
 
                 <form onSubmit={this.onSubmit}>
-                    <h4>Want to try your luck?</h4>
+                    <h3>Want to try your luck?</h3>
 
-                    <div>
+                    <div className="small-div">
                         <label>Amount of ether to enter</label>
-                        <input
-                            value={this.state.value}
-                            onChange={(e) =>
-                                this.setState({ value: e.target.value })
-                            }
-                        />
+                        <div>
+                            <input
+                                value={this.state.value}
+                                onChange={(e) =>
+                                    this.setState({ value: e.target.value })
+                                }
+                            />
+                            <button className="small-button">Add</button>
+                        </div>
                     </div>
-
-                    <button>Enter</button>
                 </form>
 
                 <hr />
 
-                <h4>Ready to pick a winner?</h4>
-                <button onClick={this.onClick}>Pick a winner!</button>
+                <div className="div-2">
+                    <h3 className="h3">Ready to pick a winner?</h3>
+                    <button className="big-button" onClick={this.onClick}>
+                        Pick a winner!
+                    </button>
 
-                <hr />
-
+                    {/* <hr /> */}
+                </div>
                 <h1>{this.state.message}</h1>
             </div>
         );
